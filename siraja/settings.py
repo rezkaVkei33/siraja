@@ -70,8 +70,8 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'db_siraja',
         'USER': 'siraja',
-        'PASSWORD': '',
-        'HOST': 'Siraja#123',
+        'PASSWORD': 'Siraja#123',
+        'HOST': '103.217.145.123',
         'PORT': '3306'
     }
 }
