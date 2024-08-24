@@ -69,9 +69,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'db_siraja',
-        'USER': 'root',
+        'USER': 'siraja',
         'PASSWORD': '',
-        'HOST': 'localhost',
+        'HOST': 'Siraja#123',
         'PORT': '3306'
     }
 }
