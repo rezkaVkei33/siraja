@@ -1,0 +1,30 @@
+<!-- Modal Ubah Rute-->
+<div class="modal fade" id="ubah-{{ data.id_rute }}" tabindex="-1" aria-labelledby="modalTambahLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalTambahLabel">Tambah Rute</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="{% url 'ubah_rute' data.id_rute %}" method="POST">
+                {% csrf_token %}
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="ruteAsal">Rute Asal</label>
+                        <input type="text" value="{{data.asal}}" name="asal" class="form-control" id="ruteAsal" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="ruteTujuan">Rute Tujuan</label>
+                        <input type="text" value="{{data.tujuan}}" name="tujuan" class="form-control" id="ruteTujuan" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" name="kirim" class="btn btn-primary">Kirim</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

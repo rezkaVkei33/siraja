@@ -1,0 +1,120 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <title>SiRaja - {{title}}</title>
+        {% include 'siraja-master/style.html' %}
+        <link rel="stylesheet" href="{% static 'siraja-master/css/tabel_jadwal.css' %}">
+    <body>
+
+         {% include 'siraja-master/navbar.html' %}
+
+         
+         <!-- jadwal Start -->
+    <div class="container-fluid team py-5">
+        <div class="container py-5">
+            <div class="panel">
+                <div class="header-images">
+                    <!-- Gambar Kiri -->
+                    <img src="{% static 'bootsrap/img/logo/logoBeltim.png' %}" alt="logoBeltim.png">
+                    <!-- Judul Tengah -->
+                    <div>
+                        <h1 class="display-5 header-text">{{title}}</h1>
+                    </div>
+                    <!-- Gambar Kanan -->
+                    <img src="{% static 'siraja-master/img/LOGO_KEMENTERIAN_PERHUBUNGAN_REPUBLIK_INDONESIA.png' %}" alt="Logo Kanan">
+                </div>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-offset-1 col-md-12">
+                                    <div class="panel-heading">
+                                        <div class="row">
+                                            <div class="col col-sm-3 col-xs-12">
+                                                <h4 class="title"> <span>Trayek</span></h4>
+                                            </div>
+                                            <div class="col-sm-9 col-xs-12 text-right">
+                                                <div class="btn_group">
+                                                    <form method="GET" action="{% url 'trayek' %}" class="form-inline mb-3">
+                                                        <select name="t" class="form-control mr-sm-2 text-dark">
+                                                            <option value="">Filter Kategori</option>
+                                                            {% for data in kategori_list %}
+                                                            <option value="{{ data.id_kategori }}" {% if data.id_kategori|stringformat:"s" == selected_kategori|stringformat:"s" %}selected{% endif %}>
+                                                                {{ data.kategori }}
+                                                            </option>
+                                                            {% endfor %}
+                                                        </select>
+                                                        <button type="submit" class="btn btn-info"><i class="fa fa-filter"></i> Filter</button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="panel-body table-responsive">
+                                        <table class="table">
+                                            <thead class="header-title">
+                                                <tr>
+                                                    <th style="color:#00458a; font-weight: bold;">No</th>
+                                                    <th style="color:#00458a; font-weight: bold;">Trayek</th>
+                                                    <th style="color:#00458a; font-weight: bold;">Jarak (km)</th>
+                                                    <th style="color:#00458a; font-weight: bold;">Rute Asal</th>
+                                                    <th style="color:#00458a; font-weight: bold;">Rute Tujuan</th>
+                                                    <th style="color:#00458a; font-weight: bold;">Jumlah Armada</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="header-text">
+                                                {% for trayek in page_obj %}
+                                                <tr>
+                                                    <td>{{ forloop.counter0|add:page_obj.start_index }}</td>
+                                                    <td>{{ trayek.jenis_trayek }}</td>
+                                                    <td>{{ trayek.jarak }}</td>
+                                                    <td>{{ trayek.id_rute.asal }}</td>
+                                                    <td>{{ trayek.id_rute.tujuan }}</td>
+                                                    <td>{{ trayek.jumlah_armada }}</td>
+                                                </tr>
+                                                {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="panel-footer">
+                                        <div class="row">
+                                            <div class="col col-sm-6 col-xs-6">showing <b>{{ trayek_count }}</b> entries</div>
+                                            <div class="col-sm-6 col-xs-6">
+                                                <ul class="pagination hidden-xs pull-right">
+                        
+                                                    {% for num in page_obj.paginator.page_range %}
+                                                        {% if page_obj.number == num %}
+                                                            <li class="page-item active"><span class="page-link">{{ num }}</span></li>
+                                                        {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                                                            <li class="page-item"><a class="page-link" href="?page={{ num }}{% if query %}&j={{ query }}{% endif %}">{{ num }}</a></li>
+                                                        {% endif %}
+                                                    {% endfor %}
+                                    
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+        <!-- jadwal End -->
+          
+
+       
+        {% include 'login.html' %}
+
+        
+       {% include 'siraja-master/footer.html' %}
+
+        {% include 'login.html' %}
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-primary btn-lg-square rounded-circle back-to-top"><i class="fa fa-arrow-up"></i></a>   
+
+            {% include 'siraja-master/javascript.html' %}
+
+    </body>
+</html>

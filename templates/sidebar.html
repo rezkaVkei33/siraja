@@ -1,0 +1,136 @@
+ <!-- Sidebar -->
+<ul class="navbar-nav bg-gradient-success sidebar sidebar-dark accordion" id="accordionSidebar">
+
+    <!-- Sidebar - Brand -->
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{% url 'chart' %}">
+        <div class="sidebar-brand-icon rotate-n-15">
+            <i class="fas fa-bus"></i>
+        </div>
+        <div class="sidebar-brand-text mx-3">Siraja</div>
+    </a>
+
+
+    <!-- Divider -->
+    <hr class="sidebar-divider">
+
+    <!-- Nav Item - Pages Collapse Menu -->
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#barpenumpang"
+            aria-expanded="true" aria-controls="barpenumpang">
+            <i class="fas fa-fw fa-calendar"></i>
+            <span>Jadwal Terminal</span>
+        </a>
+        <div id="barpenumpang" class="collapse" aria-labelledby="headingUtilities"
+            data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item" href="{% url 'data_jadwal' %}">Jadwal Angkutan</a>
+            </div>
+        </div>
+    </li>
+    <!-- Divider -->
+    <hr class="sidebar-divider d-none d-md-block">
+
+    <!-- Nav Item - Pages Collapse Menu -->
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#barpetugas"
+            aria-expanded="true" aria-controls="barpetugas">
+            <i class="fas fa-fw fa-database"></i>
+            <span>Data Angkutan</span>
+        </a>
+        <div id="barpetugas" class="collapse" aria-labelledby="headingUtilities"
+            data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item" href="{% url 'data_kios' %}">Data Kios</a>
+                <a class="collapse-item" href="{% url 'data_terminal' %}">Data Terminal</a>
+                <a class="collapse-item" href="{% url 'data_angkutan' %}">Data Angkutan</a>   
+                <a class="collapse-item" href="{% url 'data_rute' %}">Data Rute</a>   
+                <a class="collapse-item" href="{% url 'data_trayek' %}">Data Trayek</a>   
+                <a class="collapse-item" href="{% url 'data_penumpang' %}">Data Penumpang</a>   
+            </div>
+        </div>
+    </li>
+    <!-- Divider -->
+    <hr class="sidebar-divider d-none d-md-block">
+
+    <!-- Nav Item - Pages Collapse Menu -->
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#laporan"
+            aria-expanded="true" aria-controls="laporan">
+            <i class="fas fa-fw fa-archive"></i>
+            <span>Laporan Angkutan</span>
+        </a>
+        <div id="laporan" class="collapse" aria-labelledby="headingUtilities"
+            data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item" href="{% url 'ekspor_angkutan_view' %}">Angkutan - Rute</a>
+                <a class="collapse-item" href="{% url 'ekspor_trayek_view' %}">Trayek - Rute</a>
+                <a class="collapse-item" href="{% url 'ekspor_penumpang_view' %}">Angkutan - Penumpang</a>   
+            </div>
+        </div>
+    </li>
+    <!-- Divider -->
+    <hr class="sidebar-divider d-none d-md-block">
+
+    <!-- Nav Item - Pages Collapse Menu -->
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#statistik"
+            aria-expanded="true" aria-controls="statistik">
+            <i class="fas fa-fw fa-signal"></i>
+            <span>Statistik Penumpang</span>
+        </a>
+        <div id="statistik" class="collapse" aria-labelledby="headingUtilities"
+            data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item" href="{% url 'penumpang_summary' %}">Htg Angkutan Penumpang</a>
+                <a class="collapse-item" href="{% url 'chart' %}">Data Statistik</a>
+                <a class="collapse-item" href="{% url 'penumpang_perbulan' %}">Stk. Penumpang bln.</a>
+                <a class="collapse-item" href="{% url 'penumpang_pertahun' %}">Stk. Penumpang Thn.</a>   
+            </div>
+        </div>
+    </li>
+    <!-- Divider -->
+    <hr class="sidebar-divider d-none d-md-block">
+
+
+    <!-- Nav Item - Pages Collapse Menu -->
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#user"
+            aria-expanded="true" aria-controls="user">
+            <i class="fas fa-fw fa-user"></i>
+            <span>Managemen User</span>
+        </a>
+        <div id="user" class="collapse" aria-labelledby="headingUtilities"
+            data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item" href="{% url 'manage_user' %}">Data User</a>
+                <a class="collapse-item" href="" data-toggle="modal" data-target="#logout">Log Out</a>   
+            </div>
+        </div>
+    </li>
+    <!-- Divider -->
+    <hr class="sidebar-divider d-none d-md-block">
+
+    <!-- Nav Item - Pages Collapse Menu -->
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#dokumentasi"
+            aria-expanded="true" aria-controls="dokumentasi">
+            <i class="fas fa-fw fa-image"></i>
+            <span>Galeri</span>
+        </a>
+        <div id="dokumentasi" class="collapse" aria-labelledby="headingUtilities"
+            data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item" href="{% url 'data_galeri' %}">Upload Kegiatan</a>   
+                <a class="collapse-item" href="{% url 'data_kotak_saran' %}">Kotak Saran</a>   
+            </div>
+        </div>
+    </li>
+    <!-- Divider -->
+    <hr class="sidebar-divider d-none d-md-block">
+
+    
+
+</ul>
+<!-- End of Sidebar -->
+
+ 

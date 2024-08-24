@@ -1,0 +1,52 @@
+<!-- Modal Tambah Jadwal -->
+<div class="modal fade" id="modalTambah" tabindex="-1" aria-labelledby="modalTambahLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalTambahLabel">Tambah Jadwal</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="{% url 'tambah_jadwal' %}" method="POST">
+                {% csrf_token %}
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="idAngkutan">Angkutan</label>
+                        <select name="id_angkutan" class="form-control" id="idAngkutan" required>
+                            <option value="">Pilih Angkutan</option>
+                            {% for angkutan in angkutan_list %}
+                            <option value="{{ angkutan.id_angkutan }}">{{ angkutan.nama_sopir }} - {{ angkutan.plat_nomor }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="idTerminal">Terminal</label>
+                        <select name="id_terminal" class="form-control" id="idTerminal" required>
+                            <option value="">Pilih Terminal</option>
+                            {% for terminal in terminal_list %}
+                            <option value="{{ terminal.id_terminal }}">{{ terminal.nama_terminal }} - {{ terminal.lokasi }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="waktuBerangkat">Waktu Berangkat</label>
+                        <input type="date" name="waktu_berangkat" class="form-control" id="waktuBerangkat" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="jamMasuk">Jam Masuk</label>
+                        <input type="time" name="jam_masuk" class="form-control" id="jamMasuk" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="jamKeluar">Jam Keluar</label>
+                        <input type="time" name="jam_keluar" class="form-control" id="jamKeluar" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" name="kirim" class="btn btn-primary">Kirim</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

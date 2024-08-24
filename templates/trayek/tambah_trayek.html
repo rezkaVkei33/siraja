@@ -1,0 +1,52 @@
+<!-- Modal Tambah Trayek -->
+<div class="modal fade" id="modalTambahTrayek" tabindex="-1" aria-labelledby="modalTambahLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalTambahLabel">Tambah Trayek</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="{% url 'tambah_trayek' %}" method="POST">
+                {% csrf_token %}
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="idKategori">Kategori</label>
+                        <select name="id_kategori" class="form-control" id="idKategori" required>
+                            <option value="">Pilih Kategori</option>
+                            {% for data in kategori_list %}
+                            <option value="{{ data.id_kategori }}">{{ data.kategori }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="idRute">Rute</label>
+                        <select name="id_rute" class="form-control" id="idRute" required>
+                            <option value="">Pilih Rute</option>
+                            {% for data in rute_list %}
+                            <option value="{{ data.id_rute }}">{{ data.asal }} - {{ data.tujuan }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="trayek">Trayek</label>
+                        <input type="text" name="jenis_trayek" class="form-control" id="trayek" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="jarak">Jarak</label>
+                        <input type="text" name="jarak" class="form-control" id="jarak">
+                    </div>
+                    <div class="form-group">
+                        <label for="jumlahArmada">Jumlah Armada</label>
+                        <input type="number" name="jumlah_armada" class="form-control" id="jumlahArmada">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" name="kirim" class="btn btn-primary">Kirim</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

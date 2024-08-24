@@ -1,0 +1,125 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+  <!-- Content Row -->
+  <div class="container-fluid">
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800"><strong>DATA STATISTIK</strong></h1>
+    </div>
+
+     <!-- Content Row -->
+     <div class="row">
+        <!-- total Angkutan -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                Angkutan</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ angkutan_count }}</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-bus fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Total Penumpang -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-success shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                Penumpang</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ penumpang_count }}</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">Naik : {{ total_naik }} Orang</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">Turun : {{ total_turun }} Orang</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-users fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Total Kios -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-info shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                Kios</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ kios_count }}</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-shopping-cart fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Total Terminal -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-warning shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                Terminal</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ terminal_count }}</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-building fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Content Row -->
+
+     <!-- Content Row -->
+     <div class="row">
+        <div class="col-xl-6 col-lg-6">
+            <!-- Angkutan Bar Chart -->
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Angkutan</h6>
+                </div>
+                    <div class="card-body">
+                        <div class="chart-bar">
+                            <canvas id="angkutanChart"></canvas>
+                        </div>
+                    </div>
+            </div>
+            </div>
+                
+            <!-- Penumpang Bar Chart -->
+                <div class="col-xl-6 col-lg-6">
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">Penumpang</h6>
+                        </div>
+                        <div class="card-body">
+                                <div class="chart-bar">
+                                    <canvas id="penumpangChart"></canvas>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+</div>
+
+<script src="{% static 'bootsrap/js/chart.js' %}"></script>
+<!-- <script src="{% static 'bootsrap/js/demo/chart-bar-demo.js' %}"></script> -->
+
+{% endblock %}

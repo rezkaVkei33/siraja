@@ -1,0 +1,14 @@
+.bar-chart-container {
+  text-align: center;
+  margin-top: 2rem;
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+}
+
+#myBarChart {
+  max-width: 100%;
+  height: auto;
+  
+}

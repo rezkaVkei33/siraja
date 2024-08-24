@@ -1,0 +1,30 @@
+ <!-- Modal Ubah Terminal -->
+ <div class="modal fade" id="ubah-{{ terminal.id_terminal }}" tabindex="-1" aria-labelledby="modalTambahLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalTambahLabel">Ubah Terminal</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="{% url 'ubah_terminal' terminal.id_terminal %}" method="POST">
+                {% csrf_token %}
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="namaTerminal">Ubah Terminal</label>
+                        <input type="text" value="{{terminal.nama_terminal}}" name="nama_terminal" class="form-control" id="namaTerminal" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="lokasiTerminal">Lokasi Terminal</label>
+                        <input type="text" value="{{terminal.lokasi}}" name="lokasi" class="form-control" id="lokasiTerminal" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" name="kirim" class="btn btn-primary">Kirim</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

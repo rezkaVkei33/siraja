@@ -1,0 +1,167 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <title>SiRaja - {{title}}</title>
+        {% include 'siraja-master/style.html' %}
+    <body>
+
+         {% include 'siraja-master/navbar.html' %}
+
+          <!-- Header Start -->
+          <div class="container-fluid bg-breadcrumb">
+            <div class="container text-center py-5" style="max-width: 900px;">
+                <h4 class="text-white display-4 mb-4 wow fadeInDown" data-wow-delay="0.1s">{{title}}</h4>
+                <ol class="breadcrumb d-flex justify-content-center mb-0 wow fadeInDown" data-wow-delay="0.3s">
+                    <li class="breadcrumb-item"><a href="{% url 'index' %}">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{% url 'index' %}">Pages</a></li>
+                    <li class="breadcrumb-item active text-primary">{{title}}</li>
+                </ol>    
+            </div>
+        </div>
+        <!-- Header End -->
+
+         
+         <!-- Contact Start -->
+        <div class="container-fluid contact bg-light py-5">
+            <div class="container py-5">
+                <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 800px;">
+                    <h1 class="display-4 mb-4">{{kontak}}</h1>
+                </div>
+                <div class="row g-5">
+                    <div class="col-xl-6 wow fadeInLeft" data-wow-delay="0.2s">
+                        <div class="contact-img d-flex justify-content-center" >
+                            <div class="contact-img-inner">
+                                <img src="{% static 'siraja-master/img/tentang-dishub.jpg' %}" class="img-fluid w-100"  alt="Image">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-6 wow fadeInRight" data-wow-delay="0.1s">
+                        <div>
+                            <h3 class="text-dark">{{saran}}</h3>
+                            <form action="{% url 'tambah_saran' %}" method="POST">
+                                {% csrf_token %}
+                                <div class="row g-3">
+                                    <div class="col-lg-12 col-xl-6">
+                                        <div class="form-floating">
+                                            <input type="text" name="nama" class="form-control border-0" id="nama" placeholder="Nama" required>
+                                            <label for="name">Nama</label>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-lg-12 col-xl-6">
+                                        <div class="form-floating">
+                                            <input type="number" name="telepon" class="form-control border-0" id="telepon" placeholder="Telepon / Whatsapp">
+                                            <label for="phone">Telepon / Whatsapp</label>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-12">
+                                        <div class="form-floating">
+                                            <input type="text" name="subjek" class="form-control border-0" id="subjek" placeholder="Subjek">
+                                            <label for="subject">Subjek</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-floating">
+                                            <textarea name="pesan" class="form-control border-0" placeholder="Masukkan saran disini" id="message" style="height: 120px"></textarea>
+                                            <label for="message">Pesan / Saran</label>
+                                        </div>
+
+                                    </div>
+                                        <!-- message success -->
+                                        {% if messages %}
+                                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                            {% for kontak in messages %}
+                                            {{ kontak }}
+                                            {% endfor %}
+                                        </div>
+                                        {% endif %}
+                                    <div class="col-12">
+                                        <button class="btn btn-primary w-100 py-3">Kirim</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div>
+                            <div class="row g-4">
+                                <div class="col-md-6 col-lg-3 wow fadeInUp" data-wow-delay="0.2s">
+                                    <div class="contact-add-item">
+                                        <div class="contact-icon text-primary mb-4">
+                                            <i class="fas fa-map-marker-alt fa-2x"></i>
+                                        </div>
+                                        <div>
+                                            <h4>Alamat</h4>
+                                            <p class="mb-0">
+                                                Mekar Jaya, Kec. Manggar, Kabupaten Belitung Timur, Kepulauan Bangka Belitung 33512
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-lg-3 wow fadeInUp" data-wow-delay="0.4s">
+                                    <div class="contact-add-item">
+                                        <div class="contact-icon text-primary mb-4">
+                                            <i class="fas fa-envelope fa-2x"></i>
+                                        </div>
+                                        <div>
+                                            <h4>Email</h4>
+                                            <p class="mb-0"></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-lg-3 wow fadeInUp" data-wow-delay="0.6s">
+                                    <div class="contact-add-item">
+                                        <div class="contact-icon text-primary mb-4">
+                                            <i class="fa fa-phone-alt fa-2x"></i>
+                                        </div>
+                                        <div>
+                                            <h4>Telepon / WA</h4>
+                                            <p class="mb-0">0818-0222-2811 (Aristo Yulizsar)</p>
+                                            <p class="mb-0">0819-4917-5227 (Feby Harimurti)</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-lg-3 wow fadeInUp" data-wow-delay="0.8s">
+                                    <div class="contact-add-item">
+                                        <div class="contact-icon text-primary mb-4">
+                                            <i class="fab fa-firefox-browser fa-2x"></i>
+                                        </div>
+                                        <div>
+                                            <h4>Website</h4>
+                                            <p class="mb-0"><a href="https://dishub.beltim.go.id/" class="text-gray">dishub.beltim.go.id</a></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="rounded">
+                        <iframe class="rounded w-100" 
+                        style="height: 400px;" 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7977.745786264036!2d108.2745207!3d-2.866012!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e10d987707d009b%3A0xad21c803e2a2c3fb!2sTerminal%20Manggar!5e0!3m2!1sen!2sid!4v1694263554245!5m2!1sen!2sid" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        <!-- Contact End -->
+
+          
+        
+       {% include 'siraja-master/footer.html' %}
+
+        {% include 'login.html' %}
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-primary btn-lg-square rounded-circle back-to-top"><i class="fa fa-arrow-up"></i></a>   
+
+            {% include 'siraja-master/javascript.html' %}
+
+    </body>
+</html>

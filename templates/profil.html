@@ -1,0 +1,131 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <title>SiRaja - {{title}}</title>
+        {% include 'siraja-master/style.html' %}
+    <body>
+
+         {% include 'siraja-master/navbar.html' %}
+
+         <!-- Header Start -->
+         <div class="container-fluid bg-breadcrumb">
+            <div class="container text-center py-5" style="max-width: 900px;">
+                <h4 class="text-white display-4 mb-4 wow fadeInDown" data-wow-delay="0.1s">{{title}}</h4>
+                <ol class="breadcrumb d-flex justify-content-center mb-0 wow fadeInDown" data-wow-delay="0.3s">
+                    <li class="breadcrumb-item"><a href="{% url 'index' %}">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{% url 'index' %}">Pages</a></li>
+                    <li class="breadcrumb-item active text-info">{{title}}</li>
+                </ol>    
+            </div>
+        </div>
+        <!-- Header End -->
+
+        <!-- About Start -->
+        <div class="container-fluid bg-light about py-5">
+            <div class="container py-5">
+                <div class="row g-5">
+                    <div class="col-xl-5 wow fadeInLeft" data-wow-delay="0.1s">
+                        <div class="about-item-content bg-white rounded p-5 h-100">
+                            <h1 class="display-12 mb-4">{{tentang}}</h1>
+                            <p style="font-size: medium;" class="text-dark">FASILTAS UTAMA:</p>
+                            <ol>
+                                <li class="text-dark">Jalur keberangkatan dan kedatangan</li>
+                                <li class="text-dark">Ruang tunggu penumpang</li>
+                                <li class="text-dark">Tempat naik turun penumpang</li>
+                                <li class="text-dark">Tempat parkir kendaraan</li>
+                                <li class="text-dark">Perlengkapan jalan</li>
+                                <li class="text-dark">Media informasi</li>
+                                <li class="text-dark">Kantor pelayanan terminal</li>
+                            </ol>
+                            <p style="font-size: medium;" class="text-dark">FASILITAS PENUNJANG:</p>
+                            <ol>
+                                <li class="text-dark">Fasilitas ibu hamil atau menyusui</li>
+                                <li class="text-dark">Fasilitas peribadatan</li>
+                                <li class="text-dark">Toilet</li>
+                                <li class="text-dark">Tempat istirahat awak kendaraan</li>
+                                <li class="text-dark">Fasilitas kebersihan</li>
+                                <li class="text-dark">Fasilitas perdagangan/pertokoan</li>
+                            </ol>
+                        </div>
+                    </div>
+                    <div class="col-xl-7 wow fadeInRight" data-wow-delay="0.2s">
+                        <div class="bg-white rounded p-3 h-100">
+                            <div class="row g-2 justify-content-center">
+                                <div class="col-6">
+                                    <div class="rounded bg-light">
+                                        <img src="{% static 'siraja-master/img/profil1.jpg' %}" class="img-fluid rounded w-100" alt="">
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="rounded bg-light">
+                                        <img src="{% static 'siraja-master/img/profil3.jpg' %}" class="img-fluid rounded w-100" alt="">
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="rounded bg-light">
+                                        <img src="{% static 'siraja-master/img/profil2.jpg' %}" class="img-fluid rounded w-100" alt="">
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="rounded bg-light">
+                                        <img src="{% static 'siraja-master/img/profil4.jpg' %}" class="img-fluid rounded w-100" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- About End -->
+
+          <!-- struktur organisasi -->
+          <div class="container-fluid service py-5">
+            <div class="container py-5">
+                <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style="max-width: 800px;">
+                    <h1 class="display-12 mb-4">{{struktur}}</h1>
+                </div>
+                <div class="row g-4 justify-content-center">
+                    <div class="col-md-12 col-lg-12 col-xl-9 wow fadeInUp" data-wow-delay="0.4s">
+                            <div class="service-img">
+                                <!-- Menampilkan gambar -->
+                                <img src="{% static 'siraja-master/img/struktur_organisasi.png' %}" class="img-fluid rounded-top" alt="struktur_organisasi.png">
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End -->
+
+        <!-- layout Start -->
+        <div class="container-fluid faq-section bg-light py-5">
+            <div class="container py-5">
+                <div class="row g-5 align-items-center">
+                    <div class="col-xl-6 wow fadeInLeft" data-wow-delay="0.1s">
+                        <div class="h-100">
+                            <div class="mb-5">
+                                <h1 class="display-4 mb-0">{{layout}}</h1>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-6 wow fadeInRight" data-wow-delay="0.4s">
+                        <img src="{% static 'siraja-master/img/layout.png' %}" class="img-fluid w-100" alt="layout.png">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- layout End -->
+        {% include 'login.html' %}
+
+        
+       {% include 'siraja-master/footer.html' %}
+
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-primary btn-lg-square rounded-circle back-to-top"><i class="fa fa-arrow-up"></i></a>   
+
+            {% include 'siraja-master/javascript.html' %}
+    </body>
+</html>

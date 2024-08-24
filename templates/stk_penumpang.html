@@ -1,0 +1,81 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <title>SiRaja - {{title}}</title>
+        {% include 'siraja-master/style.html' %} 
+        <link rel="stylesheet" href="{% static 'siraja-master/css/tabel_jadwal.css' %}">
+        <!-- <link rel="stylesheet" href="{% static 'siraja-master/css/chart.css' %}"> -->
+    <body>
+
+         {% include 'siraja-master/navbar.html' %}
+
+          <!-- Header Start -->
+          <div class="container-fluid bg-breadcrumb">
+            <div class="container text-center py-5" style="max-width: 900px;">
+                <h4 class="text-white display-4 mb-4 wow fadeInDown" data-wow-delay="0.1s">{{title}}</h4>
+                <ol class="breadcrumb d-flex justify-content-center mb-0 wow fadeInDown" data-wow-delay="0.3s">
+                    <li class="breadcrumb-item"><a href="{% url 'index' %}">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{% url 'index' %}">Pages</a></li>
+                    <li class="breadcrumb-item active text-info">{{title}}</li>
+                </ol>    
+            </div>
+        </div>
+        <!-- Header End -->
+         
+       
+        
+                    <!-- Bar Chart - START -->
+                    <div class="container-fluid team py-5">
+                        <div class="container py-5">
+                            <div class="panel">
+                                <div class="header-images">
+                                    <!-- Gambar Kiri -->
+                                    <img src="{% static 'bootsrap/img/logo/logoBeltim.png' %}" alt="logoBeltim.png">
+                                    <!-- Judul Tengah -->
+                                    <div>
+                                        <h1 class="display-5 header-text">{{title | upper}}</h1>
+                                        <h2 class="header-text">TERMINAL MANGGAR</h2>
+                                    </div>
+                                    <!-- Gambar Kanan -->
+                                    <img src="{% static 'siraja-master/img/LOGO_KEMENTERIAN_PERHUBUNGAN_REPUBLIK_INDONESIA.png' %}" alt="Logo Kanan">
+                                </div>
+                    
+                                <!-- Bar Chart - START -->
+                                 
+                                        <div class="bar-chart-container">
+                                            <canvas 
+                                            style="background-color: wheat; 
+                                            border-radius: 10px; padding: 20px; 
+                                            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                                            " id="penumpangPerTahunChart"></canvas>
+                                        </div>
+                                    
+                                
+                                <!-- Bar Chart - END -->
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Bar Chart - END -->
+              
+            
+       
+        {% include 'login.html' %}
+
+        
+       {% include 'siraja-master/footer.html' %}
+
+        {% include 'login.html' %}
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-primary btn-lg-square rounded-circle back-to-top"><i class="fa fa-arrow-up"></i></a>   
+
+            {% include 'siraja-master/javascript.html' %}
+            <script src="{% static 'siraja-master/js/Chart.js' %}"></script>
+           <script src="{% static 'siraja-master/js/penumpang.js' %}"></script>
+           
+
+    </body>
+</html>

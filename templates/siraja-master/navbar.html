@@ -1,0 +1,47 @@
+{% load static %}
+  <!-- Spinner Start -->
+   <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+    <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+        <span class="sr-only">Loading...</span>
+    </div>
+</div>
+<!-- Spinner End -->
+
+<!-- Navbar & Hero Start -->
+<div class="container-fluid nav-bar px-0 px-lg-4 py-lg-0">
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light"> 
+            <a href="{% url 'index' %}" class="navbar-brand p-0">
+                <h1 class="text-primary mb-0"><img src="{% static 'bootsrap/img/logo/logoBeltim.png' %}" alt="{% static 'bootsrap/img/logo/logoBeltim.png' %}"> SiRaja</h1>
+                <!-- <img src="img/logo.png" alt="Logo"> -->
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                <span class="fa fa-bars"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <div class="navbar-nav mx-0 mx-lg-auto">
+                    <a href="{% url 'index' %}" class="nav-item nav-link">Beranda</a>
+                    <a href="{% url 'profil' %}" class="nav-item nav-link">Profil</a>
+                    <a href="{% url 'galeri' %}" class="nav-item nav-link">Galeri</a>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link" data-bs-toggle="dropdown">
+                            <span class="dropdown-toggle">Layanan</span>
+                        </a>
+                        <div class="dropdown-menu">
+                            <a href="{% url 'jadwal' %}" class="dropdown-item">Informasi Jadwal Angkutan</a>
+                            <a href="{% url 'angkutan' %}" class="dropdown-item">Informasi Angkutan</a>
+                            <a href="{% url 'trayek' %}" class="dropdown-item">Informasi Trayek</a>
+                            <a href="{% url 'stk_penumpang' %}" class="dropdown-item">Data Penumpang Naik Turun</a>
+                        </div>
+                    </div>
+                    <a href="{% url 'kontak' %}" class="nav-item nav-link">HubungiKami</a>
+                    <div class="nav-btn px-3">
+                        <button class="btn-search btn btn-primary btn-md-square rounded-circle flex-shrink-0" data-bs-toggle="modal" data-bs-target="#"><i class="fas fa-search"></i></button>
+                        <a href="#" class="btn btn-success rounded-pill py-2 px-4 ms-3 flex-shrink-0 text-white" data-bs-toggle="modal" data-bs-target="#loginAdmin"> <i class="fas fa-key"></i> LOGIN</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>
+<!-- Navbar & Hero End -->

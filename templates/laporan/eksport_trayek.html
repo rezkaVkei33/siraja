@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container-fluid">
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800"><strong>{{ title }}</strong></h1>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Export Trayek Berdasarkan Kategori</h6>
+                </div>
+                <div class="card-body">
+                    <!-- Form to select Kategori and export data -->
+                    <form method="get" action="{% url 'ekspor_trayek' %}">
+                        <div class="form-group">
+                            <label for="kategori">Pilih Kategori</label>
+                            <select name="selected_kategori_id" class="form-control mb-3" id="kategori">
+                                <option value="" disabled selected>-- Pilih Kategori --</option>
+                                {% for kategori in kategori_list %}
+                                    <option value="{{ kategori.id_kategori }}" {% if request.GET.selected_kategori_id == kategori.id_kategori %}selected{% endif %}>{{ kategori.kategori }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" name="type" value="excel" class="btn btn-primary"><i class="fa fa-download"></i> Excel</button>
+                            <button type="submit" name="type" value="pdf" class="btn btn-secondary"><i class="fa fa-download"></i> PDF</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+
+{% block content %}
+ 
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800"><strong>DATA RUTE</strong></h1>
+        <!-- Search Form -->
+        <form method="GET" action="{% url 'data_rute' %}" class="form-inline mb-3">
+            <input type="text" name="r" value="{{ query }}" class="form-control mr-sm-2" placeholder="Search..">
+            <button type="submit" class="btn btn-secondary"><i class="fa fa-search"></i> Search</button>
+        </form>
+
+    </div>
+    <!-- Content Row -->
+    <div class="container-fluid">
+    
+        <div class="row">
+            <div class="col-lg-12 mb-4">
+                <!-- Illustrations -->
+                <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                <a href="" class="btn btn-primary" data-toggle="modal" data-target="#modalTambah">
+                    <i class="fas fa-plus"></i> Tambah data</a> 
+                </div>
+                <div class="card-body">
+                <div class="container-fluid">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover">
+                            <thead>
+                                <tr style="text-transform: uppercase;">
+                                <th scope="col">No</th>
+                                <th scope="col">Asal</th>
+                                <th scope="col">Tujuan</th>
+                                <th scope="col">Aksi</th>
+    
+                                </tr>
+                            </thead>
+                           
+                            <tbody>
+                                {% for data in data_rute %}
+                                <tr>
+                                <td>{{ forloop.counter0|add:data_rute.start_index }}</td>
+                                <td>{{data.asal}}</td>
+                                <td>{{data.tujuan}}</td>
+                                <td>
+                                <a href="" class="btn btn-success" data-toggle="modal" data-target="#ubah-{{ data.id_rute }}"><i class="fa fa-edit"></i></a>
+                                <a href="" class="btn btn-danger" data-toggle="modal" data-target="#hapus-{{ data.asal }}"><i class="fa fa-trash"></i></a>
+                                </td>
+                                </tr>
+                                {% include 'rute/ubah_rute.html' %}
+                                {% include 'rute/hapus_rute.html' %}
+                                
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- Pagination controls -->
+                        <div class="d-flex justify-content-justify">
+                            <nav aria-label="Page navigation">
+                                <ul class="pagination">
+                                    {% if data_rute.has_previous %}
+                                        <li class="page-item"><a class="page-link" href="?page=1{% if query %}&r={{ query }}{% endif %}">First</a></li>
+                                        <li class="page-item"><a class="page-link" href="?page={{ data_rute.previous_page_number }}{% if query %}&r={{ query }}{% endif %}">Previous</a></li>
+                                    {% else %}
+                                        <li class="page-item disabled"><span class="page-link">Previous</span></li>
+                                    {% endif %}
+
+                                    {% for num in data_rute.paginator.page_range %}
+                                        {% if data_rute.number == num %}
+                                            <li class="page-item active"><span class="page-link">{{ num }}</span></li>
+                                        {% elif num > data_rute.number|add:'-3' and num < data_rute.number|add:'3' %}
+                                            <li class="page-item"><a class="page-link" href="?page={{ num }}{% if query %}&r={{ query }}{% endif %}">{{ num }}</a></li>
+                                        {% endif %}
+                                    {% endfor %}
+
+                                    {% if data_rute.has_next %}
+                                        <li class="page-item"><a class="page-link" href="?page={{ data_rute.next_page_number }}{% if query %}&r={{ query }}{% endif %}">Next</a></li>
+                                        <li class="page-item"><a class="page-link" href="?page={{ data_rute.paginator.num_pages }}{% if query %}&r={{ query }}{% endif %}">Last</a></li>
+                                    {% else %}
+                                        <li class="page-item disabled"><span class="page-link">Next</span></li>
+                                    {% endif %}
+                                </ul>
+                            </nav>
+                        </div>
+                        <!-- End of Pagination controls -->
+
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.container-fluid -->
+    {% include 'rute/tambah_rute.html' %}
+ 
+{% endblock %}

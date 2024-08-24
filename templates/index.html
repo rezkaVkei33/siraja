@@ -1,0 +1,150 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <title>SiRaja - Sistem Informasi Teminal Angkutan Jalan</title>
+        {% include 'siraja-master/style.html' %}
+        <style>
+             
+        #map {
+            height: 500px; 
+            width: 100%;
+            border-radius: 10px;
+        }
+        </style>
+
+    </head>
+    <body>
+
+         {% include 'siraja-master/navbar.html' %}
+
+        <!-- Modal Search Start -->
+        <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-fullscreen">
+                <div class="modal-content rounded-0">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Search by keyword</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body d-flex align-items-center bg-primary">
+                        <div class="input-group w-75 mx-auto d-flex">
+                            <input type="search" class="form-control p-3" placeholder="keywords" aria-describedby="search-icon-1">
+                            <span id="search-icon-1" class="btn bg-light border nput-group-text p-3"><i class="fa fa-search"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal Search End -->
+
+
+        <!-- Carousel Start -->
+        <div class="header-carousel owl-carousel">
+            <div class="header-carousel-item bg-primary">
+                <div class="carousel-caption">
+                    <div class="container">
+                        <div class="row g-4 align-items-center">
+                            <div class="col-lg-7">
+                                <div class="text-sm-center text-md-start">
+                                    <h4 class="text-white text-uppercase fw-bold mb-4">Welcome To..</h4>
+                                    <h1 class="display-1 text-white mb-4"> <strong style="color: burlywood;">S</strong>istem <strong style="color: burlywood;">I</strong>nformasi te<strong style="color: burlywood;">R</strong>minal <strong style="color: burlywood;">A</strong>ngkutan <strong style="color: burlywood;">JA</strong>lan "<strong style="color: burlywood;">SiRaja</strong>"</h1>
+                          
+                                   
+                                </div>
+                            </div>
+                            <div class="col-lg-5 animated fadeInRight">
+                                <div class="calrousel-img" style="object-fit: cover;">
+                                    <img src="{% static 'siraja-master/img/siraja-icon.png' %}" class="img-fluid w-100" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Carousel End -->
+         <!-- About Start -->
+        <div class="container-fluid bg-light about py-5">
+            <div class="container py-5">
+                <div class="row g-5">
+                    <div class="col-xl-6 wow fadeInLeft" data-wow-delay="0.2s">
+                        <div class="about-item-content bg-white rounded p-5 h-100">
+                                <h1 class="display-12 mb-4">{{tentang}}</h1>
+                            <p style="font-size: medium; text-align: justify;" class="text-dark">
+                                Dinas Perhubungan Kabupaten Belitung Timur adalah instansi pemerintah yang merupakan unsur pelaksana otonomi daerah di bidang perhubungan yang mempunyai peran penting sebagai urat nadi perekonomian dan penunjang pembangunan yang berkedudukan di kabupaten dan bertanggung jawab kepada kepala daerah melalui sekretaris Daerah
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-xl-6 wow fadeInRight" data-wow-delay="0.2s">
+                        <div class="bg-white rounded p-3 h-100">
+                            <div class="row g-2 justify-content-center">
+                                <div class="col-8">
+                                    <div class="rounded bg-light">
+                                        <img src="{% static 'siraja-master/img/tentang-dishub.jpg' %}" class="img-fluid rounded w-100" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- About End -->
+
+             <!-- Map Terminal -->
+            <!-- <div class="container-fluid service py-5">
+                <div class="container py-5">
+                    <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style="max-width: 800px;">
+                        <h1 class="display-12 mb-4">Lokasi Terminal Manggar, Belitung Timur</h1>
+                    </div>
+                    <div class="row g-4 justify-content-center">
+                        <div class="col-md-12 col-lg-12 col-xl-9 wow fadeInUp" data-wow-delay="0.4s">
+                            <div class="service-img">
+                                <div id="map"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+            <!-- End -->
+
+                   <!-- Galeri Start -->
+                    <div class="container-fluid testimonial pb-5">
+                        <div class="container pb-5">
+                            <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style="max-width: 800px;">
+                                <h1 class="display-4 mb-4">{{ galeri }}</h1>
+                            </div>
+
+                            <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.2s">
+                                {% for data in page_obj %}
+                                    <div class="h-100">
+                                        <img src="{{ data.file_upload.url }}" class="img-fluid h-100 rounded" style="object-fit: cover;" alt="{{ data.judul }}">
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Galeri End -->
+
+
+
+           
+
+        {% include 'login.html' %}
+
+       {% include 'siraja-master/footer.html' %}
+
+
+        {% include 'login.html' %}
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-primary btn-lg-square rounded-circle back-to-top"><i class="fa fa-arrow-up"></i></a>   
+
+            {% include 'siraja-master/javascript.html' %}
+
+            
+            
+    </body>
+
+</html>

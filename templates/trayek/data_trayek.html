@@ -1,0 +1,174 @@
+{% extends 'base.html' %}
+{% block content %}
+  <!-- Content Row -->
+<div class="container-fluid">
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800"><strong>{{title}}</strong></h1>
+    </div>
+    <!-- Content Row -->
+<div class="card shadow mb-4">  
+    <div class="card-header py-3">
+        <form method="GET" action="{% url 'data_trayek' %}" class="form-inline mb-3">
+            <select name="t" class="form-control mr-sm-2">
+                <option value="">Filter Kategori</option>
+                {% for data in kategori_list %}
+                <option value="{{ data.id_kategori }}" {% if data.id_kategori|stringformat:"s" == selected_kategori|stringformat:"s" %}selected{% endif %}>
+                    {{ data.kategori }}
+                </option>
+                {% endfor %}
+            </select>
+            <button type="submit" class="btn btn-info"><i class="fa fa-filter"></i> Filter</button>
+        </form>
+     <div class="row">
+        <div class="col-xl-8 col-lg-8">
+            <div class="card-header py-3">
+                <a href="" class="btn btn-primary" data-toggle="modal" data-target="#modalTambahTrayek">
+                    <i class="fas fa-plus"></i> Tambah data</a> 
+                </div>
+        <!-- data user -->
+        <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>NO</th>
+                    <th>TRAYEK</th>
+                    <th>JARAK</th>
+                    <th>KATEGORI</th>
+                    <th>RUTE ASAL</th>
+                    <th>RUTE TUJUAN</th>
+                    <th>JUMLAH ARMADA</th>
+                    <th>AKSI</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for data in page_obj %}
+                <tr>
+                    <td>{{ forloop.counter0|add:page_obj.start_index }}</td>
+                    <td>{{ data.jenis_trayek }}</td>
+                    <td>{{ data.jarak }} KM</td>
+                    <td>{{ data.id_kategori.kategori }}</td>
+                    <td>{{ data.id_rute.asal }}</td>
+                    <td>{{ data.id_rute.tujuan }}</td>
+                    <td>{{ data.jumlah_armada }}</td>
+                    <td>
+                        <a href="" class="btn btn-success" data-toggle="modal" data-target="#edit-{{data.id_trayek}}"><i class="fa fa-edit"></i></a>
+                        <a href="" class="btn btn-danger" data-toggle="modal" data-target="#hapus-{{data.id_trayek}}"><i class="fa fa-trash"></i></a>
+                    </td>
+                </tr>
+                {% include 'trayek/edit_trayek.html' %}
+                <!-- modal hapus -->
+                <div class="modal" tabindex="-1" id="hapus-{{data.id_trayek}}" aria-labelledby="hapusLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" style="max-width: 500px;">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Hapus</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <h5 style="align-items: center;">Apakah anda yakin ingin menghapus <strong style="color: crimson;">{{ data.jenis_trayek | upper }}</strong>?</h5>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">close</button>     
+                                <a href="{% url 'hapus_trayek' data.id_trayek %}" class="btn btn-danger">hapus</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </tbody>
+        </table>
+        </div>
+        <!-- Pagination controls -->
+        <div class="d-flex justify-content-justify">
+            <nav aria-label="Page navigation">
+                <ul class="pagination">
+                    {% if page_obj.has_previous %}
+                        <li class="page-item"><a class="page-link" href="?page=1{% if query %}&j={{ query }}{% endif %}">First</a></li>
+                        <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}{% if query %}&j={{ query }}{% endif %}">Previous</a></li>
+                    {% else %}
+                        
+                        <li class="page-item disabled"><span class="page-link">Previous</span></li>
+                    {% endif %}
+    
+                    {% for num in page_obj.paginator.page_range %}
+                        {% if page_obj.number == num %}
+                            <li class="page-item active"><span class="page-link">{{ num }}</span></li>
+                        {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                            <li class="page-item"><a class="page-link" href="?page={{ num }}{% if query %}&j={{ query }}{% endif %}">{{ num }}</a></li>
+                        {% endif %}
+                    {% endfor %}
+    
+                    {% if page_obj.has_next %}
+                        <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}{% if query %}&j={{ query }}{% endif %}">Next</a></li>
+                        <li class="page-item"><a class="page-link" href="?page={{ page_obj.paginator.num_pages }}{% if query %}&j={{ query }}{% endif %}">Last</a></li>
+                    {% else %}
+                        <li class="page-item disabled"><span class="page-link">Next</span></li>
+                    {% endif %}
+                </ul>
+            </nav>
+        </div>
+        <!-- End of Pagination controls -->
+    </div>
+    <div class="col-xl-4 col-lg-4">
+        <div class="card-header py-3">
+            <a href="" class="btn btn-primary" data-toggle="modal" data-target="#modalTambahKategori">
+                <i class="fas fa-plus"></i> Tambah Kategori</a> 
+            </div>
+        <!-- data user -->
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>NO</th>
+                        <th>KATEGORI</th>
+                        <th>AKSI</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for data in kategori_list %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ data.kategori }}</td>
+                        <td>
+                            <a href="" class="btn btn-success" data-toggle="modal" data-target="#ubah-{{data.kategori}}"><i class="fa fa-edit"></i></a>
+                            <a href="" class="btn btn-danger" data-toggle="modal" data-target="#hapus-{{data.kategori}}"><i class="fa fa-trash"></i></a>
+                        </td>
+                    </tr>
+                    {% include 'trayek/edit_kategori.html' %}
+                    <!-- modal hapus -->
+                    <div class="modal" tabindex="-1" id="hapus-{{data.kategori}}" aria-labelledby="hapusLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" style="max-width: 500px;">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Hapus</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <h5 style="align-items: center;">Apakah anda yakin ingin menghapus <strong style="color: crimson;">{{ data.kategori | upper }}</strong>?</h5>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">close</button>     
+                                    <a href="{% url 'hapus_kategori' data.id_kategori %}" class="btn btn-danger">hapus</a> 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </tbody>
+            </table>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+{% include 'trayek/tambah_trayek.html' %}
+{% include 'trayek/tambah_kategori.html' %}
+
+{% endblock %}

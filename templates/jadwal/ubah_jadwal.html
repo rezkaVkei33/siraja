@@ -1,0 +1,54 @@
+<!-- Modal Ubah Jadwal -->
+<div class="modal fade" id="ubah-{{ data.id_jadwal }}" tabindex="-1" aria-labelledby="modalUbahLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalUbahLabel">Ubah Jadwal</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="{% url 'ubah_jadwal' data.id_jadwal %}" method="POST">
+                {% csrf_token %}
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="id_terminal">Terminal</label>
+                        <select name="id_terminal" class="form-control" required>
+                            {% for terminal in terminal_list %}
+                                <option value="{{ terminal.id_terminal }}" {% if terminal.id_terminal == data.id_terminal.id_terminal %}selected{% endif %}>
+                                    {{ terminal.nama_terminal }}
+                                </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="id_angkutan">Angkutan</label>
+                        <select name="id_angkutan" class="form-control" required>
+                            {% for angkutan in angkutan_list %}
+                                <option value="{{ angkutan.id_angkutan }}" {% if angkutan.id_angkutan == data.id_angkutan.id_angkutan %}selected{% endif %}>
+                                    {{ angkutan.nama_sopir }}
+                                </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="waktuBerangkat">Waktu Berangkat</label>
+                        <input type="date" value="{{ data.waktu_berangkat|date:'Y-m-d' }}" name="waktu_berangkat" class="form-control" id="waktuBerangkat-{{ data.id_jadwal }}" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="jamMasuk">Jam Masuk</label>
+                        <input type="time" value="{{ data.jam_masuk }}" name="jam_masuk" class="form-control" id="jamMasuk-{{ data.id_jadwal }}" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="jamKeluar">Jam Keluar</label>
+                        <input type="time" value="{{ data.jam_keluar }}" name="jam_keluar" class="form-control" id="jamKeluar-{{ data.id_jadwal }}" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Kirim</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

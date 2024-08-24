@@ -1,0 +1,20 @@
+<!-- modal hapus -->
+<div class="modal" tabindex="-1" id="hapus-{{ data.asal }}" aria-labelledby="hapusLabel-{{ data.asal }}" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" style="max-width: 500px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Hapus</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h5 style="align-items: center;">Apakah anda yakin ingin menghapus <strong style="color: crimson;">{{ data.tujuan | upper }}</strong>?</h5>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <a href="{% url 'hapus_rute' data.id_rute %}" class="btn btn-danger">Hapus</a>
+            </div>
+        </div>
+    </div>
+</div>

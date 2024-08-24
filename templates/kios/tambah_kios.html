@@ -1,0 +1,35 @@
+<!-- Modal Tambah Kios -->
+<div class="modal fade" id="modalTambah" tabindex="-1" aria-labelledby="modalTambahLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalTambahLabel">Tambah Kios</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="{% url 'tambah_kios' %}" method="POST">
+                {% csrf_token %}
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="idTerminal">Terminal</label>
+                        <select name="id_terminal" class="form-control" id="idTerminal" required>
+                            <option value="">Pilih Terminal</option>
+                            {% for terminal in terminals %}
+                            <option value="{{ terminal.id_terminal }}">{{ terminal.nama_terminal }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="namaKios">Tambah Kios</label>
+                        <input type="text" name="nama_kios" class="form-control" id="namaKios" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" name="kirim" class="btn btn-primary">Kirim</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
