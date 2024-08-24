@@ -71,7 +71,7 @@ DATABASES = {
         'NAME': 'db_siraja',
         'USER': 'siraja',
         'PASSWORD': 'Siraja#123',
-        'HOST': '103.217.145.123',
+        'HOST': 'siraja@103.217.145.123',
         'PORT': '3306'
     }
 }
