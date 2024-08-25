@@ -2,9 +2,10 @@
 
 from pathlib import Path
 import os
+import pymysql
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
+pymysql.install_as_MySQLdb()
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
@@ -71,7 +72,7 @@ DATABASES = {
         'NAME': 'db_siraja',
         'USER': 'siraja',
         'PASSWORD': 'Siraja#123',
-        'HOST': 'siraja@103.217.145.123',
+        'HOST': 'siraja@localhost',
         'PORT': '3306'
     }
 }
