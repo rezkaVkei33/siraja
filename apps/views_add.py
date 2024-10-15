@@ -38,6 +38,7 @@ def tambah_angkutan(request):
         jenis_angkutan = request.POST['jenis_angkutan']
         plat_nomor = request.POST['plat_nomor']
         keterangan = request.POST['keterangan']
+        rangka_mesin = request.POST['rangka_mesin']
         tarif = request.POST['tarif']
         telepon = request.POST['telepon']
         rute = Rute.objects.get(id_rute=id_rute)
@@ -46,6 +47,7 @@ def tambah_angkutan(request):
             jenis_angkutan=jenis_angkutan,
             plat_nomor=plat_nomor,
             keterangan=keterangan,
+            rangka_mesin=rangka_mesin,
             id_rute=rute, 
             tarif=tarif,
             telepon=telepon)

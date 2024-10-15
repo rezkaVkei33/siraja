@@ -18,6 +18,7 @@ def ubah_angkutan(request, id_angkutan):
         jenis_angkutan = request.POST.get('jenis_angkutan')
         plat_nomor = request.POST.get('plat_nomor')
         keterangan = request.POST.get('keterangan')
+        rangka_mesin = request.POST.get('rangka_mesin')
         tarif = request.POST.get('tarif')
         telepon = request.POST.get('telepon')
         id_rute = request.POST.get('id_rute')
@@ -26,6 +27,7 @@ def ubah_angkutan(request, id_angkutan):
         angkutan.jenis_angkutan = jenis_angkutan
         angkutan.plat_nomor = plat_nomor
         angkutan.keterangan = keterangan
+        angkutan.rangka_mesin = rangka_mesin
         angkutan.tarif = tarif
         angkutan.telepon = telepon
         angkutan.id_rute = Rute.objects.get(pk=id_rute)

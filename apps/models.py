@@ -35,6 +35,7 @@ class Angkutan(models.Model):
     plat_nomor      = models.CharField(max_length=255, blank=True, null=True)
     jenis_angkutan  = models.CharField(max_length=255, blank=True, null=True)
     keterangan      = models.TextField(blank=True, null=True)
+    rangka_mesin      = models.CharField(max_length=255, blank=True, null=True)
     tarif           = models.CharField(max_length=255, blank=True, null=True)
     telepon         = models.CharField(max_length=255, blank=True, null=True)
     created_at      = models.DateTimeField(auto_now_add=True)

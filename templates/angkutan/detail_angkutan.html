@@ -1,47 +1,46 @@
- <!-- Modal Ubah Angkutan -->
- <div class="modal fade" id="ubah-{{ data.id_angkutan }}" tabindex="-1" aria-labelledby="modalTambahLabel" aria-hidden="true">
+ <!-- Modal detail Angkutan -->
+ <div class="modal fade" id="view-{{ data.id_angkutan }}" tabindex="-1" aria-labelledby="modalTambahLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="modalTambahLabel">Ubah Angkutan</h5>
+                <h5 class="modal-title" id="modalTambahLabel">Detail Angkutan</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="{% url 'ubah_angkutan' data.id_angkutan %}" method="POST">
+            <form method="POST">
                 {% csrf_token %}
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="idSopir">Nama Sopir</label>
-                        <input type="text" value="{{ data.nama_sopir }}" name="nama_sopir" class="form-control" id="idSopir" required>
+                        <input type="text" value="{{ data.nama_sopir }}"class="form-control" id="idSopir" readonly>
                     </div>
                     <div class="form-group">
                         <label for="jnsAngkutan">Jenis Angkutan</label>
-                        <input type="text" value="{{ data.jenis_angkutan }}" name="jenis_angkutan" class="form-control" id="jnsAngkutan" required>
+                        <input type="text" value="{{ data.jenis_angkutan }}"class="form-control" id="jnsAngkutan" readonly>
                     </div>
                     <div class="form-group">
                         <label for="pltNomor">Plat Nomor</label>
-                        <input type="text" value="{{ data.plat_nomor }}" name="plat_nomor" class="form-control" id="pltNomor" required>
+                        <input type="text" value="{{ data.plat_nomor }}" class="form-control" id="pltNomor" readonly>
                     </div>
                     <div class="form-group">
                         <label for="tarif">Tarif</label>
-                        <input type="number" inputmode="numeric" value="{{ data.tarif }}" name="tarif" class="form-control" id="tarif" required>
+                        <input type="number" inputmode="numeric" value="{{ data.tarif }}"class="form-control" id="tarif" readonly>
                     </div>
                     <div class="form-group">
                         <label for="telepon">Telepon</label>
-                        <input type="number" inputmode="numeric" value="{{ data.telepon }}" name="telepon" class="form-control" id="telepon" required>
+                        <input type="number" inputmode="numeric" value="{{ data.telepon }}" class="form-control" id="telepon" readonly>
                     </div>
                     <div class="form-group">
                         <label for="rangka_mesin">No. Rangka Mesin</label>
-                        <input type="text" value="{{ data.rangka_mesin }}" name="rangka_mesin" class="form-control" id="rangka_mesin">
+                        <input type="text" value="{{ data.rangka_mesin }}"class="form-control" id="rangka_mesin" readonly>
                     </div>
                     <div class="form-group">
                         <label for="keterangan">Keterangan</label>
-                       <textarea name="keterangan" class="form-control" id="keterangan">{{ data.keterangan }}</textarea>
-                    </div>
+                        <input type="text" class="form-control" id="keterangan" value="{{ data.keterangan }}" readonly>
                     <div class="form-group">
                         <label for="idRute">Rute</label>
-                        <select name="id_rute" class="form-control" id="idRute" required>
+                        <select name="id_rute" class="form-control" id="idRute">
                             {% for rute in rute_list %}
                             <option value="{{ rute.id_rute }}" {% if data.id_rute == rute %}selected{% endif %}>{{ rute.asal }} => {{ rute.tujuan }}</option>
                             {% endfor %}
@@ -50,7 +49,6 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" name="kirim" class="btn btn-primary">Kirim</button>
                 </div>
             </form>
         </div>

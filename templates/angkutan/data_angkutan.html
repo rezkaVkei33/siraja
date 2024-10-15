@@ -35,10 +35,7 @@
                                 <th scope="col">Keterangan</th>
                                 <th scope="col">Asal</th>
                                 <th scope="col">Tujuan</th>
-                                <th scope="col">Tarif</th>
-                                <th scope="col">Telepon</th>
                                 <th scope="col">Aksi</th>
-    
                                 </tr>
                             </thead>
                            
@@ -51,16 +48,16 @@
                                 <td>{{data.plat_nomor}}</td>
                                 <td>{{data.keterangan}}</td>
                                 <td>{{data.asal}}</td>
-                                <td>{{data.tujuan}}</td>
-                                <td>{{data.tarif}}</td>
                                 <td>{{data.telepon}}</td>
                                 <td>
                                 <a href="" class="btn btn-success" data-toggle="modal" data-target="#ubah-{{ data.id_angkutan }}"><i class="fa fa-edit"></i></a>
+                                <a href="" class="btn btn-info" data-toggle="modal" data-target="#view-{{ data.id_angkutan }}"><i class="fa fa-eye"></i></a>
                                 <a href="" class="btn btn-danger" data-toggle="modal" data-target="#hapus-{{ data.id_angkutan }}"><i class="fa fa-trash"></i></a>
                                 </td>
                                 </tr>
                                 {% include 'angkutan/ubah_angkutan.html' %}
                                 {% include 'angkutan/hapus_angkutan.html' %}
+                                {% include 'angkutan/detail_angkutan.html' %}
                                 
                                 {% endfor %}
                             </tbody>
